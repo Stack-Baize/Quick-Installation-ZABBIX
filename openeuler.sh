@@ -3,7 +3,7 @@
 # Author: 火星小刘 / 中国青岛
 # Install Zabbix 7.0 on Openeuler Linux 22.03 / 24.03
 
-zabbix_version=7.0.23
+zabbix_version=7.0.26
 zabbixdir=`pwd`
 
 echo -e "\e[32mAuthor: \e[0m\e[33m火星小刘 / 中国青岛\e[0m"
@@ -55,7 +55,6 @@ if [ "$openeuler_version" == "22" ]; then
     if [ ! -f net-snmp-5.9.4.tar.gz ]; then
         curl -L -o net-snmp-5.9.4.tar.gz https://sourceforge.net/projects/net-snmp/files/net-snmp/5.9.4/net-snmp-5.9.4.tar.gz/download
     fi
-
         tar zxvf net-snmp-5.9.4.tar.gz 
         cd net-snmp-5.9.4
         ./configure --with-default-snmp-version="2"  --with-systemd --with-sys-contact="who@where" --with-sys-location="location" --with-logfile="/var/log/snmpd.log" --with-persistent-directory="/var/net-snmp"
