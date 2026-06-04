@@ -116,6 +116,22 @@ source /etc/os-release
 # 复制离线安装脚本到zabbix_offline
 cp offline_install.sh "$CACHE_DIR"
 
+add_wechat_dingtalk_feishu_scripts() {
+  echo -e "\n\e[31m拉取企业微信、钉钉、飞书告警脚本,具体查看: https://gitee.com/xtlyk/Zabbix-Alert-WeChat\e[0m"
+  echo -e "\e[31m运行命令: ls -la /usr/lib/zabbix/alertscripts 查看脚本\e[0m"
+  echo -e "\e[31m此操作不影响zabbix使用\e[0m"
+  git clone https://gitee.com/xtlyk/Zabbix-Alert-WeChat.git "$CACHE_DIR/alertscripts"
+  ls -la "$CACHE_DIR/alertscripts"
+}
+
+add_zabbix_modules() {
+  echo -e "\n\e[31m拉取Zabbix cmdb、报表、图表树、机柜管理等模块，具体查看：https://gitee.com/xtlyk/zabbix_modules\e[0m"
+  echo -e "\e[31m此操作不影响zabbix使用\e[0m"
+  echo -e "\e[31m你可以在zabbix 安装完成后，在“管理”-“常规”-“模块”中点击“扫描目录”后，在列表中查找并启用这些模块\e[0m"
+  git clone https://gitee.com/xtlyk/zabbix_modules.git "$CACHE_DIR/modules"
+  ls -la "$CACHE_DIR/modules"
+}
+
 # 根据操作系统类型和版本选择安装和配置步骤
 if [ "$ID" == "centos" ] || [ "$ID" == "rocky" ]; then
   VERSION_ID=$(echo "$VERSION_ID" | cut -d'.' -f1)
@@ -126,7 +142,8 @@ if [ "$ID" == "centos" ] || [ "$ID" == "rocky" ]; then
   install_zabbix_release_on_centos_or_rocky
   dnf install tar -y
   dnf install --downloadonly --downloaddir="$CACHE_DIR/rpm" zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-sql-scripts zabbix-selinux-policy zabbix-agent MariaDB-server MariaDB-client MariaDB-backup MariaDB-devel langpacks-zh_CN git -y
-  dnf install zabbix-server-mysql zabbix-web-mysql zabbix-apache-conf zabbix-sql-scripts zabbix-selinux-policy zabbix-agent
+  add_wechat_dingtalk_feishu_scripts
+  add_zabbix_modules
   # 打包
   tar -czvf "$ID-$VERSION_ID-zabbix7-offline-install.tar.gz" -C "$(pwd)" zabbix_offline
 elif [ "$ID" == "ubuntu" ] || [ "$ID" == "debian" ]; then
@@ -138,6 +155,8 @@ elif [ "$ID" == "ubuntu" ] || [ "$ID" == "debian" ]; then
   apt install tar -y
   apt install --download-only zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-sql-scripts zabbix-agent mariadb-server mariadb-client git -y
   cp /var/cache/apt/archives/*.deb "$CACHE_DIR/deb"
+  add_wechat_dingtalk_feishu_scripts
+  add_zabbix_modules
   # 打包
   tar -czvf "$ID-$VERSION_ID-zabbix7-offline-install.tar.gz" -C "$(pwd)" zabbix_offline
 fi

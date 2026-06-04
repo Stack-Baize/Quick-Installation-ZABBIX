@@ -143,6 +143,7 @@ add_zabbix_modules() {
   cp -r modules/* /usr/share/zabbix/modules/
   chown -R apache:apache /usr/share/zabbix/modules/*
   ls -la /usr/share/zabbix/modules/
+}
 
 # 安装rpm下的所有rpm包
 install_rpm_packages() {
