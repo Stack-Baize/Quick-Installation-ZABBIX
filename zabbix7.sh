@@ -7,7 +7,7 @@ DEFAULT_PASSWORD="huoxingxiaoliu"
 
 # 提示用户设置密码
 echo -e "\e[32m是否要设置自定义的数据库密码？默认密码为：$DEFAULT_PASSWORD\e[0m"
-echo -e "\e[32m请选择 (y/n): \e[0m"
+echo -e "\e[32m请选择 (y/N): \e[0m"
 read -r set_custom_password
 
 if [ "$set_custom_password" = "y" ] || [ "$set_custom_password" = "Y" ]; then

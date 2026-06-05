@@ -161,18 +161,6 @@ elif [ "$ID" == "ubuntu" ] || [ "$ID" == "debian" ]; then
   tar -czvf "$ID-$VERSION_ID-zabbix7-offline-install.tar.gz" -C "$(pwd)" zabbix_offline
 fi
 
-echo -e "\n\e[31m拉取企业微信、钉钉、飞书告警脚本,具体查看: https://gitee.com/xtlyk/Zabbix-Alert-WeChat\e[0m"
-echo -e "\e[31m此操作不影响zabbix使用\e[0m"
-echo -e "\e[31m运行命令: ls -la /usr/lib/zabbix/alertscripts 查看脚本\e[0m"
-git clone https://gitee.com/xtlyk/Zabbix-Alert-WeChat.git "$CACHE_DIR/alertscripts"
-ls -la "$CACHE_DIR/alertscripts"
-
-echo -e "\n\e[31m拉取Zabbix cmdb、报表、图表树、机柜管理等模块，具体查看：https://gitee.com/xtlyk/zabbix_modules\e[0m"
-echo -e "\e[31m此操作不影响zabbix使用\e[0m"
-echo -e "\e[31m你可以在zabbix 安装完成后，在“管理”-“常规”-“模块”中点击“扫描目录”后，在列表中查找并启用这些模块\e[0m"
-git clone https://gitee.com/xtlyk/zabbix_modules.git "$CACHE_DIR/modules"
-ls -la "$CACHE_DIR/modules"
-
 echo '离线安装包制作完成。'
 echo '请将生成的离线安装包拷贝到没有网络的服务器上执行安装脚本。'
 echo "安装命令: tar -xzvf $ID-$VERSION_ID-zabbix7-offline-install.tar.gz && cd zabbix_offline && bash offline_install.sh"
