@@ -4,7 +4,7 @@ English | [简体中文](README.md)
 
 ### <https://www.bilibili.com/video/BV1Qu411z7i1/> Click this link, or follow the official account for more tutorials
 
-<img src="https://github.com/X-Mars/Quick-Installation-ZABBIX/blob/master/images/3.jpg?raw=true" width="25%" height="25%">
+<img src="https://github.com/X-Mars/Quick-Installation-ZABBIX/blob/master/images/4.jpg?raw=true" width="80%" height="80%">
 
 ## Zabbix Installation Scripts
 

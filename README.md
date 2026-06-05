@@ -4,7 +4,7 @@
 
 ### <https://www.bilibili.com/video/BV1Qu411z7i1/> 可以点击此链接，或关注公众号，获取更多教程
 
-<img src="https://github.com/X-Mars/Quick-Installation-ZABBIX/blob/master/images/3.jpg?raw=true" width="25%" height="25%">
+<img src="https://github.com/X-Mars/Quick-Installation-ZABBIX/blob/master/images/4.jpg?raw=true" width="80%" height="80">
 
 ## zabbix安装脚本
 
